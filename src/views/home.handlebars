@@ -1,0 +1,86 @@
+<header>
+<h1>Products</h1>
+<section class="px-4 text-center bg-indigo-500 py-8 ">
+		<h2 class="text-3xl font-semibold mb-4">Hello {{user.first_name}}</h2>
+
+	
+			<p class="text-xl">Su rol es: {{user.role}}</p>
+	
+
+			<button
+				class="bg-indigo-700 hover:bg-indigo-800 t py-2 px-4 rounded-full"
+			>
+				{{user.email}}
+			</button>
+		</a>
+		<a href="/api/sessions/logout">
+			<button
+				class="bg-red-500 hover:bg-red-600  py-2 px-4 rounded-full mt-4"
+			>
+				Logout
+			</button>
+		</a>
+	</section>
+ 
+</header>
+<div class="divHome">
+  
+  {{#each products}}
+    <div class="card carta" style="width: 18rem;">
+      <img class="card-img-top" src="{{this.thumbnail}}" alt="{{this.title}}">
+      <div class="card-body">
+        <h2>{{this.title}}</h2>
+        <p>Description: {{this.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush listaUl">
+        <li class="list-group-item listaLi">Price: ${{this.price}}</li>
+        <li class="list-group-item listaLi">Code: {{this.code}}</li>
+        <li class="list-group-item listaLi">Stock: {{this.stock}}</li>
+      </ul>
+      <div class="flex items-center mt-2 botonescard">
+        <button class="bg-gray-300 text-gray-600 px-3 py-1 rounded-l" onclick="decrementQuantity(this)" data-product-id="{{this.id}}">-</button>
+        <input type="number" min="1" value="1" class="text-center bg-gray-100 text-black-600" id="quantityInput_{{this.id}}" data-product-id="{{this.id}}">
+        <button class="bg-gray-300 text-black-600 px-3 py-1 rounded-r" onclick="incrementQuantity(this)" data-product-id="{{this.id}}">+</button>
+      </div>
+      <button class="rounded bg-purple-600 px-2 py-2 md:px-6 hover:bg-purple-700 transition-all ease hover:scale-105 mt-2 addTocart" data-product-id="{{this.id}}">Add to cart</button>
+    </div>
+  {{/each}}
+  
+
+  <aside class="flex items-center justify-center space-x-2 mt-4 asideHome">
+  {{#if response.hasPrevPage}}
+    <a
+      href="{{this.link}}"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+    >
+      Previous
+    </a>
+  {{/if}}
+  
+  {{#each response.pages}}
+    {{#if this.isCurrent}}
+      <span
+        class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+      >{{this.page}}</span>
+    {{else}}
+      <a
+        href="{{this.link}}"
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full"
+      >
+        {{this.page}}
+      </a>
+    {{/if}}
+  {{/each}}
+
+  {{#if response.hasNextPage}}
+    <a
+      href="{{response.nextLink}}"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+    >
+      Next
+    </a>
+  {{/if}}
+</aside>
+
+
+<script src="js/home.js"></script>

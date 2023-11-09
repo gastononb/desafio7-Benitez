@@ -1,0 +1,65 @@
+<main class="flex min-h-screen items-center justify-center bg-indigo-500">
+	<div
+		class="w-full max-w-md rounded-lg bg-white p-8 shadow-md mx-8 flex flex-col"
+	>
+		<h1
+			class="mb-4 text-center text-3xl font-semibold text-indigo-500"
+		>Register</h1>
+		<form action="/api/sessions/register" method="post">
+			<div class="mb-4">
+				<input
+					type="text"
+					name="first_name"
+					placeholder="First Name"
+					class="w-full rounded border p-2 focus:border-indigo-500 focus:outline-none"
+					required
+				/>
+			</div>
+			<div class="mb-4">
+				<input
+					type="text"
+					name="last_name"
+					placeholder="Last Name"
+					class="w-full rounded border p-2 focus:border-indigo-500 focus:outline-none"
+					required
+				/>
+			</div>
+			<div class="mb-4">
+				<input
+					type="email"
+					name="email"
+					placeholder="Email"
+					class="w-full rounded border p-2 focus:border-indigo-500 focus:outline-none"
+					required
+				/>
+			</div>
+			<div class="mb-4">
+				<input
+					type="number"
+					name="age"
+					placeholder="age"
+					class="w-full rounded border p-2 focus:border-indigo-500 focus:outline-none"
+					required
+				/>
+			</div>
+			<div class="mb-4">
+				<input
+					type="password"
+					name="password"
+					placeholder="Password"
+					class="w-full rounded border p-2 focus:border-indigo-500 focus:outline-none"
+					required
+				/>
+			</div>
+			<button
+				type="submit"
+				class="w-full rounded bg-indigo-500 p-2 text-white hover:bg-indigo-600 focus:bg-indigo-600 focus:outline-none"
+			>Register</button>
+		</form>
+
+		<a
+			href="/"
+			class="mt-4 w-full rounded bg-indigo-100 text-center p-2 text-indigo-500 hover:bg-indigo-600 hover:underline focus:bg-indigo-600 focus:outline-none hover:text-white"
+		>Login</a>
+	</div>
+</main>
